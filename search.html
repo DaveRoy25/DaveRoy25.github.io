@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoHive - Search Results</title>
+    <link rel="stylesheet" href="search.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/Crypto.png" alt="CryptoHive Logo">
+            </a>
+
+            <!-- Theme Toggle -->
+            <div class="theme-toggle">
+                <button id="btnTheme">
+                    <span id="themeToggleIcon"></span>
+                </button>
+                <span>Toggle dark/light</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <!-- Sidebar for Filters -->
+        <div class="sidebar">
+            <h2>Filter Your Search</h2>
+            <form id="filter-form">
+                <!-- Cryptocurrency Filter -->
+                <div class="filter-section">
+                    <h3>Cryptocurrency</h3>
+                    <div>
+                        <input type="checkbox" id="bitcoin" name="cryptocurrency" value="Bitcoin">
+                        <label for="bitcoin">Bitcoin</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ethereum" name="cryptocurrency" value="Ethereum">
+                        <label for="ethereum">Ethereum</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="dogecoin" name="cryptocurrency" value="Dogecoin">
+                        <label for="dogecoin">Dogecoin</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ripple" name="cryptocurrency" value="Ripple">
+                        <label for="ripple">Ripple</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="litecoin" name="cryptocurrency" value="Litecoin">
+                        <label for="litecoin">Litecoin</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cardano" name="cryptocurrency" value="Cardano">
+                        <label for="cardano">Cardano</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="polkadot" name="cryptocurrency" value="Polkadot">
+                        <label for="polkadot">Polkadot</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="solana" name="cryptocurrency" value="Solana">
+                        <label for="solana">Solana</label>
+                    </div>
+                </div>
+
+                <!-- Date of Publish Filter -->
+                <div class="filter-section">
+                    <h3>Date of Publish</h3>
+                    <input type="date" id="start-date" name="start-date" >
+                    <input type="date" id="end-date" name="end-date" >
+                </div>
+
+                <!-- Apply Filters Button -->
+                <button type="submit" class="apply-filters">Apply Filters</button>
+            </form>
+        </div>
+
+        <!-- Main Content with Search Bar and Results -->
+        <div class="main-content">
+            <form action="search.html" method="GET">
+                <div class="search-wrapper">
+                    <input 
+                        type="text" 
+                        name="query" 
+                        placeholder="Search for cryptocurrency news..." 
+                        required 
+                    >
+                    <button type="submit">
+                        Search
+                    </button>
+                </div>
+            </form>
+
+            <main class="results-container">
+                <h1>Search Results</h1>
+
+                <div class="results-grid">
+                    <div class="results-column">
+                        <div class="result-card">
+                            <a href="#" class="result-title">
+                                Lorem Ipsum Title 1
+                            </a>
+                            <p class="result-description">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero autem esse a nulla, rem aliquid architecto quia incidunt voluptatem molestiae expedita magni consequuntur delectus, qui deleniti ratione! Iusto, sit ad.
+                            </p>
+                        </div>
+                        <div class="result-card">
+                            <a href="#" class="result-title">
+                                Lorem Ipsum Title 2
+                            </a>
+                            <p class="result-description">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi exercitationem quis minus consectetur, ipsam suscipit blanditiis atque totam eius. Recusandae, unde! Rem error nulla optio dolore assumenda neque explicabo soluta.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="results-column">
+                        <div class="result-card">
+                            <a href="#" class="result-title">
+                                Lorem Ipsum Title 3
+                            </a>
+                            <p class="result-description">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, architecto officia! Optio in sit vel eligendi quidem reprehenderit quos quis, repudiandae architecto, eius veritatis repellat voluptatibus velit maxime inventore similique.
+                            </p>
+                        </div>
+                        <div class="result-card">
+                            <a href="#" class="result-title">
+                                Lorem Ipsum Title 4
+                            </a>
+                            <p class="result-description">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, omnis iste. Error accusamus numquam optio omnis dolor delectus et, obcaecati eligendi. Iste sapiente architecto impedit, quo id aperiam eum consequuntur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <button class="page-button">Previous</button>
+                    <button class="page-button active">1</button>
+                    <button class="page-button">2</button>
+                    <button class="page-button">3</button>
+                    <button class="page-button">Next</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            © 2024 CryptoHive™. All rights reserved.
+        </div>
+    </footer>
+
+      <!-- JavaScript for Sidebar and theme Toggles -->
+    <script src="main.js"></script>
+</body>
+</html>

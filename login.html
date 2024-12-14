@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoHive - Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+<body>
+    <!-- Header with Logo and Theme Toggle -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="images/Crypto.png" alt="CryptoHive Logo">
+            </a>
+            <div class="theme-toggle">
+                <button id="btnTheme" class="theme-button">
+                    <span id="themeToggleIcon" class="theme-icon"></span>
+                </button>
+                <span>Toggle dark/light</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Form Section -->
+    <main>
+        <div class="login-container">
+            <h1>Login to CryptoHive</h1>
+            <form class="login-form">
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+                <div class="signup-text">
+                    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            © 2024 CryptoHive. All rights reserved.
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

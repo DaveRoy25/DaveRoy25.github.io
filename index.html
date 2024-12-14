@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoHive - Cryptocurrency News & Insights</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/images/Bfavicon.png"/>
+</head>
+<body>
+    <!-- Header with Navigation and Theme Toggle -->
+    <header>
+        <div class="header-container">
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <button onclick="window.location.href='login.html'" class="btn-login">Login</button>
+                <button onclick="window.location.href='signup.html'" class="btn-signup">Sign Up</button>
+            </div>
+
+            <!-- Theme Toggle -->
+            <div class="theme-toggle">
+                <button id="btnTheme">
+                    <span id="themeToggleIcon"></span>
+                </button>
+                <span>Toggle dark/light</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <img src="images/Crypto.png" alt="CryptoHive Logo" class="logo">
+            <h1>CryptoHive</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <form action="search.html" method="GET">
+                <input type="text" name="query" placeholder="Search for cryptocurrency news..." required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+<!-- Featured Sections -->
+<div class="featured-sections">
+  <div class="feature-card">
+      <h2>Latest News</h2>
+      <p>Stay updated with the most recent cryptocurrency developments.</p>
+  </div>
+  <div class="feature-card">
+      <h2>Market Analysis</h2>
+      <p>In-depth insights and trends in the crypto market.</p>
+  </div>
+  <div class="feature-card">
+      <h2>Investment Guides</h2>
+      <p>Expert tips and strategies for crypto investing.</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2024 CryptoHive™. All rights reserved.</p>
+</footer>
+    <script src="main.js"></script>
+</body>
+</html>
