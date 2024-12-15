@@ -395,3 +395,72 @@ footer {
 .sidebar .filter-section > div:hover {
     background-color: rgba(59, 130, 246, 0.05);
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .logo img {
+        height: 80px; /* Adjust logo size for smaller screens */
+    }
+
+    .theme-toggle {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    .sidebar {
+        width: 100%; /* Make sidebar full width */
+        margin-bottom: 1rem; /* Add spacing below sidebar */
+        position: static; /* Disable sticky behavior on small screens */
+    }
+
+    .main-content {
+        width: 100%; /* Full width for main content */
+        padding: 0.5rem;
+    }
+
+    .search-wrapper input {
+        width: 100%; /* Full width search bar */
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr; /* Single column layout for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo img {
+        height: 60px; /* Further reduce logo size */
+    }
+
+    .search-wrapper input {
+        font-size: 0.9rem; /* Smaller font for search input */
+    }
+
+    .result-card {
+        padding: 1rem; /* Compact card padding */
+    }
+
+    .pagination {
+        flex-wrap: wrap; /* Wrap pagination for small screens */
+    }
+
+    .page-button {
+        padding: 0.4rem 0.8rem; /* Adjust pagination button size */
+    }
+}
