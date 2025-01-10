@@ -27,7 +27,7 @@
     <main>
         <div class="login-container">
             <h1>Login to CryptoHive</h1>
-            <form class="login-form">
+            <form class="login-form" id="loginForm">
                 <div>
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" required placeholder="Enter your email">
@@ -53,6 +53,61 @@
             © 2024 CryptoHive. All rights reserved.
         </div>
     </footer>
+
+    <!-- Firebase Integration -->
+    <script type="module">
+        // Firebase SDK imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+        // Firebase configuration (replace with your actual config)
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://cryptohive-289bf-default-rtdb.firebaseio.com",
+            projectId: "cryptohive-289bf",
+            storageBucket: "cryptohive-289bf.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Handle Login
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const dbRef = ref(db);
+
+            get(child(dbRef, 'users')).then((snapshot) => {
+                let authenticated = false;
+
+                snapshot.forEach((user) => {
+                    const userData = user.val();
+                    if (userData.email === email && userData.password === password) {
+                        authenticated = true;
+                        alert('Login Successful!');
+                        window.location.href = 'userpage.html';  // Redirect to user dashboard
+                    }
+                });
+
+                if (!authenticated) {
+                    alert('Invalid credentials. Please try again.');
+                }
+            }).catch((error) => {
+                console.error('Error fetching data:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+
     <script src="main.js"></script>
 </body>
 </html>

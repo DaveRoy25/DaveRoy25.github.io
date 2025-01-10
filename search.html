@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,6 @@
             <a href="index.html" class="logo">
                 <img src="images/Crypto.png" alt="CryptoHive Logo">
             </a>
-
-            <!-- Theme Toggle -->
             <div class="theme-toggle">
                 <button id="btnTheme">
                     <span id="themeToggleIcon"></span>
@@ -25,11 +23,9 @@
     </header>
 
     <div class="search-container">
-        <!-- Sidebar for Filters -->
         <div class="sidebar">
             <h2>Filter Your Search</h2>
             <form id="filter-form">
-                <!-- Cryptocurrency Filter -->
                 <div class="filter-section">
                     <h3>Cryptocurrency</h3>
                     <div>
@@ -40,109 +36,27 @@
                         <input type="checkbox" id="ethereum" name="cryptocurrency" value="Ethereum">
                         <label for="ethereum">Ethereum</label>
                     </div>
-                    <div>
-                        <input type="checkbox" id="dogecoin" name="cryptocurrency" value="Dogecoin">
-                        <label for="dogecoin">Dogecoin</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="ripple" name="cryptocurrency" value="Ripple">
-                        <label for="ripple">Ripple</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="litecoin" name="cryptocurrency" value="Litecoin">
-                        <label for="litecoin">Litecoin</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="cardano" name="cryptocurrency" value="Cardano">
-                        <label for="cardano">Cardano</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="polkadot" name="cryptocurrency" value="Polkadot">
-                        <label for="polkadot">Polkadot</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="solana" name="cryptocurrency" value="Solana">
-                        <label for="solana">Solana</label>
-                    </div>
                 </div>
-
-                <!-- Date of Publish Filter -->
                 <div class="filter-section">
                     <h3>Date of Publish</h3>
-                    <input type="date" id="start-date" name="start-date" >
-                    <input type="date" id="end-date" name="end-date" >
+                    <input type="date" id="start-date" name="start-date">
+                    <input type="date" id="end-date" name="end-date">
                 </div>
-
-                <!-- Apply Filters Button -->
                 <button type="submit" class="apply-filters">Apply Filters</button>
             </form>
         </div>
 
-        <!-- Main Content with Search Bar and Results -->
         <div class="main-content">
             <form action="search.html" method="GET">
                 <div class="search-wrapper">
-                    <input 
-                        type="text" 
-                        name="query" 
-                        placeholder="Search for cryptocurrency news..." 
-                        required 
-                    >
-                    <button type="submit">
-                        Search
-                    </button>
+                    <input type="text" name="query" placeholder="Search for cryptocurrency news..." required>
+                    <button type="submit">Search</button>
                 </div>
             </form>
 
             <main class="results-container">
                 <h1>Search Results</h1>
-
-                <div class="results-grid">
-                    <div class="results-column">
-                        <div class="result-card">
-                            <a href="#" class="result-title">
-                                Lorem Ipsum Title 1
-                            </a>
-                            <p class="result-description">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero autem esse a nulla, rem aliquid architecto quia incidunt voluptatem molestiae expedita magni consequuntur delectus, qui deleniti ratione! Iusto, sit ad.
-                            </p>
-                        </div>
-                        <div class="result-card">
-                            <a href="#" class="result-title">
-                                Lorem Ipsum Title 2
-                            </a>
-                            <p class="result-description">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi exercitationem quis minus consectetur, ipsam suscipit blanditiis atque totam eius. Recusandae, unde! Rem error nulla optio dolore assumenda neque explicabo soluta.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="results-column">
-                        <div class="result-card">
-                            <a href="#" class="result-title">
-                                Lorem Ipsum Title 3
-                            </a>
-                            <p class="result-description">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, architecto officia! Optio in sit vel eligendi quidem reprehenderit quos quis, repudiandae architecto, eius veritatis repellat voluptatibus velit maxime inventore similique.
-                            </p>
-                        </div>
-                        <div class="result-card">
-                            <a href="#" class="result-title">
-                                Lorem Ipsum Title 4
-                            </a>
-                            <p class="result-description">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, omnis iste. Error accusamus numquam optio omnis dolor delectus et, obcaecati eligendi. Iste sapiente architecto impedit, quo id aperiam eum consequuntur.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pagination">
-                    <button class="page-button">Previous</button>
-                    <button class="page-button active">1</button>
-                    <button class="page-button">2</button>
-                    <button class="page-button">3</button>
-                    <button class="page-button">Next</button>
-                </div>
+                <div class="results-grid"></div>
             </main>
         </div>
     </div>
@@ -153,7 +67,59 @@
         </div>
     </footer>
 
-      <!-- JavaScript for Sidebar and theme Toggles -->
+    <!-- JavaScript for Fetching Data and Displaying Results -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('query');
+
+            if (query) {
+                fetchCryptoNews(query);
+            }
+
+            function fetchCryptoNews(query) {
+                const apiKey = 'fd4212bd5c7349bc98ec6a3d1fbbb222';  // Replace with your actual API key
+                const apiUrl = `https://newsapi.org/v2/everything?q=${query}&apiKey=${apiKey}`;
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => displayResults(data.articles))
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                        displayError();
+                    });
+            }
+
+            function displayResults(articles) {
+                const resultsGrid = document.querySelector(".results-grid");
+                resultsGrid.innerHTML = "";
+
+                if (articles.length === 0) {
+                    resultsGrid.innerHTML = "<p>No results found.</p>";
+                    return;
+                }
+
+                articles.forEach(article => {
+                    const articleElement = document.createElement("div");
+                    articleElement.classList.add("result-card");
+                    articleElement.innerHTML = `
+                        <a href="${article.url}" target="_blank" class="result-title">
+                            ${article.title}
+                        </a>
+                        <p class="result-description">
+                            ${article.description || 'No description available.'}
+                        </p>
+                    `;
+                    resultsGrid.appendChild(articleElement);
+                });
+            }
+
+            function displayError() {
+                const resultsGrid = document.querySelector(".results-grid");
+                resultsGrid.innerHTML = "<p>Failed to load articles. Please try again later.</p>";
+            }
+        });
+    </script>
     <script src="main.js"></script>
 </body>
 </html>
