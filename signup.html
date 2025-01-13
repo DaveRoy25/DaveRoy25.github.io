@@ -60,27 +60,29 @@
     <script type="module">
         // Firebase SDK imports
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
         import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
-        // Firebase configuration (replace with actual values)
+        // Firebase configuration
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            apiKey: "AIzaSyBOoXS6eITby8o6FKKKJgK10yWMEQSnSO4",
+            authDomain: "cryptohive-289bf.firebaseapp.com",
             databaseURL: "https://cryptohive-289bf-default-rtdb.firebaseio.com",
             projectId: "cryptohive-289bf",
             storageBucket: "cryptohive-289bf.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
+            messagingSenderId: "397521332560",
+            appId: "1:397521332560:web:3becfd579a4442b384e455"
         };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
         const db = getDatabase(app);
 
         // Handle Form Submission
         const signupForm = document.getElementById('signupForm');
 
-        signupForm.addEventListener('submit', (e) => {
+        signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const username = document.getElementById('username').value;
@@ -94,19 +96,48 @@
                 return;
             }
 
-            // Store user data in Firebase
-            set(ref(db, 'users/' + username), {
-                email: email,
-                password: password  // Use hashed password in production
-            }).then(() => {
+            try {
+                // Create user with Firebase Authentication
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Set the username as the user's display name
+                await updateProfile(user, { displayName: username });
+
+                // Store additional user data in Firebase Realtime Database
+                await set(ref(db, 'users/' + user.uid), {
+                    username: username,
+                    email: email,
+                    createdAt: new Date().toISOString()
+                });
+
                 alert('User Registered Successfully!');
                 window.location.href = 'login.html';
-            }).catch((error) => {
-                alert('Error: ' + error.message);
-            });
+            } catch (error) {
+                alert('Error during signup: ' + error.message);
+                console.error('Signup error:', error);
+            }
         });
     </script>
 
+    <!-- Dark Mode Toggle (Optional) -->
+    <script>
+        const btnTheme = document.getElementById('btnTheme');
+        const body = document.body;
+
+        // Load saved theme from localStorage
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+        }
+
+        // Toggle theme on button click
+        btnTheme.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const theme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+            localStorage.setItem('theme', theme);
+        });
+    </script>
     <script src="main.js"></script>
 </body>
 </html>

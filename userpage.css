@@ -1,0 +1,58 @@
+/* Header and Logo */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo img {
+    height: 50px; /* Same size as login page */
+    width: auto;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+
+/* User Info Section */
+.user-info-container {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.user-info-container p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .user-info-container {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .header-container {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+}
